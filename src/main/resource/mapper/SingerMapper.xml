@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.SingerListMapper">
+<select id="getAllSingerList" resultMap="SingerListMap">
+    select * from singer,tag where singer.tagid=tag.tagid
+</select>
+    <resultMap id="SingerListMap" type="com.pojo.SingerVo">
+        <id property="singer_id" column="singer_id"/>
+        <result property="singer_name" column="singer_name"/>
+        <result property="photoUrl" column="photoUrl"/>
+        <association property="tag" javaType="Tag">
+            <id property="tagid" column="tagid"/>
+            <result property="tag1" column="tag1"/>
+            <result property="tag2" column="tag2"/>
+            <result property="tag3" column="tag3"/>
+        </association>
+    </resultMap>
+    <select id="getOneSinger" parameterType="int" resultMap="OneSinger">
+        select * from singer where singer_id=#{singer_id}
+    </select>
+    <resultMap id="OneSinger" type="com.pojo.SingerVo">
+        <id property="singer_id" column="singer_id"/>
+        <result property="singer_name" column="singer_name"/>
+        <result property="singer_life" column="singer_life"/>
+        <result property="accesscount" column="accesscount"/>
+        <result property="collectioncount" column="collectioncount"/>
+        <result property="birthday" column="birthday"/>
+        <result property="singersex" column="singersex"/>
+        <result property="photoUrl" column="photoUrl"/>
+        <association property="tag" javaType="Tag">
+            <id property="tagid" column="tagid"/>
+            <result property="tag1" column="tag1"/>
+            <result property="tag2" column="tag2"/>
+            <result property="tag3" column="tag3"/>
+        </association>
+        <association property="area" javaType="Area"/>
+        <collection property="songs" javaType="list" ofType="Song" column="s_id" select="getSingerSongs"></collection>
+    </resultMap>
+    <select id="getSingerSongs" parameterType="int" resultMap="OneSingerSongMap">
+        select * from song ,cd where cd.singerid=#{singer_id} and song.s_singerid=#{singer_id}
+    </select>
+    <!--<select id="OneSongList" parameterType="int" resultMap="OneSongMap">
+        select * from song s,cd,type t where s.s_CDid=cd.CDid and s.s_typeid=t.typeId and s.s_id=#{sid}
+    </select>-->
+    <resultMap id="OneSingerSongMap" type="com.pojo.SongView">
+        <id column="s_id" property="sid"/>
+        <result property="sname" column="s_name"/>
+        <result property="playcount" column="s_playcount"/>
+        <result property="publishdate" column="s_publishdate"/>
+        <result property="cyricul" column="s_cyricurl"/>
+        <result property="stime" column="s_time"/>
+        <result property="spic" column="s_pic"/>
+        <association property="cd" javaType="CD">
+            <id property="CDid" column="CDid"/>
+            <result property="CDname" column="CDname"/>
+        </association>
+    </resultMap>
+    <select id="selectSingerBySex" resultMap="SingerBySexMap">
+        select * from singer,tag where singsex=#{sex} and singer.tagid=tag.tagid
+    </select>
+    <resultMap id="SingerBySexMap" type="com.pojo.SingerVo">
+        <id property="singer_id" column="singer_id"/>
+        <result property="singer_name" column="singer_name"/>
+        <result property="photoUrl" column="photoUrl"/>
+        <association property="tag" javaType="Tag">
+            <id property="tagid" column="tagid"/>
+            <result property="tag1" column="tag1"/>
+            <result property="tag2" column="tag2"/>
+            <result property="tag3" column="tag3"/>
+        </association>
+    </resultMap>
+    <select id="searchSinger" resultMap="SingerorSongMap" parameterType="String">
+      select * from singer,song where singer.singer_name=#{name} and song.s_singerid=singer.singer_id
+    </select>
+    <resultMap id="SingerorSongMap" type="com.pojo.SingerVo">
+        <id property="singer_id" column="singer_id"/>
+        <result property="singer_name" column="singer_name"/>
+        <collection property="songs" javaType="list" ofType="Song" column="s_id" select="getSingerSongs"></collection>
+    </resultMap>
+</mapper>

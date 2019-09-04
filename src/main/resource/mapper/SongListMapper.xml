@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.SongListMapper">
+    <select id="getAllSongList" parameterType="com.pojo.SongListView" resultMap="SongListMap">
+        select * from songlist sl,tag t,user u where sl.sl_tagid=t.tagid and sl.sl_userid=u.user_id
+    </select>
+    <resultMap id="SongListMap" type="com.pojo.SongListView">
+        <id property="slid" column="sl_id"/>
+        <result property="slname" column="sl_name"/>
+        <result property="slcounts" column="sl_counts"/>
+        <result property="slinfo" column="sl_info"/>
+        <result property="sltime" column="sl_time"/>
+        <result property="slurl" column="sl_url"/>
+        <association property="user" javaType="User">
+            <id property="id" column="user_id"/>
+            <result property="name" column="user_name"/>
+        </association>
+        <association property="t" javaType="Tag">
+            <id property="tagid" column="tagid"/>
+            <result property="tag1" column="tag1"/>
+            <result property="tag2" column="tag2"/>
+            <result property="tag3" column="tag3"/>
+        </association>
+    </resultMap>
+    <select id="getOneSongList" parameterType="int" resultMap="SongListMap1">
+        select * from songlist sl,tag t,user u where sl.sl_tagid=t.tagid and sl.sl_userid=u.user_id and sl_id=#{slid}
+    </select>
+    <resultMap id="SongListMap1" type="com.pojo.SongListView">
+        <id property="slid" column="sl_id"/>
+        <result property="slname" column="sl_name"/>
+        <result property="slcounts" column="sl_counts"/>
+        <result property="slinfo" column="sl_info"/>
+        <result property="sltime" column="sl_time"/>
+        <result property="slurl" column="sl_url"/>
+        <association property="user" javaType="User">
+            <id property="id" column="user_id"/>
+            <result property="name" column="user_name"/>
+        </association>
+        <association property="t" javaType="Tag">
+            <id property="tagid" column="tagid"/>
+            <result property="tag1" column="tag1"/>
+            <result property="tag2" column="tag2"/>
+            <result property="tag3" column="tag3"/>
+        </association>
+        <collection property="songs" javaType="list" ofType="Song" column="sl_id" select="getSongs"></collection>
+    </resultMap>
+    <select id="getSongs" parameterType="int" resultMap="OneSongMap">
+        select * from songlistwithsong sw,song,singer,cd where sw.s_id=song.s_id and song.s_singerid=singer.singer_id and cd.CDid=song.s_CDid and sw.sl_id=#{slid}
+    </select>
+    <!--<select id="OneSongList" parameterType="int" resultMap="OneSongMap">
+        select * from song s,cd,type t where s.s_CDid=cd.CDid and s.s_typeid=t.typeId and s.s_id=#{sid}
+    </select>-->
+    <resultMap id="OneSongMap" type="com.pojo.SongView">
+        <id column="s_id" property="sid"/>
+        <result property="sname" column="s_name"/>
+        <result property="playcount" column="s_playcount"/>
+        <result property="publishdate" column="s_publishdate"/>
+        <result property="songurl" column="s_songurl"/>
+        <result property="cyricul" column="s_cyricurl"/>
+        <result property="stime" column="s_time"/>
+        <result property="spic" column="s_pic"/>
+        <association property="singer" javaType="Singer">
+            <id property="singer_id" column="singer_id"/>
+            <result property="singer_name" column="singer_name"/>
+        </association>
+        <association property="cd" javaType="CD">
+            <id property="CDid" column="CDid"/>
+            <result property="CDname" column="CDname"/>
+        </association>
+        <association property="type" javaType="Type">
+            <id property="typeId" column="typeId"/>
+            <result property="typeName" column="typeName"/>
+        </association>
+    </resultMap>
+    <select id="getOneTagSong" parameterType="String" resultMap="TagSongMap">
+        select * from songlist sl,tag t where sl.sl_tagid=t.tagid and t.tagid in (SELECT tagid from tag  where tag1=#{tagname} or tag2=#{tagname} or tag3=#{tagname})
+    </select>
+    <resultMap id="TagSongMap" type="com.pojo.SongListView">
+        <id property="slid" column="sl_id"/>
+        <result property="slname" column="sl_name"/>
+        <result property="slcounts" column="sl_counts"/>
+        <result property="slinfo" column="sl_info"/>
+        <result property="sltime" column="sl_time"/>
+        <result property="slurl" column="sl_url"/>
+        <association property="user" javaType="User">
+            <id property="id" column="user_id"/>
+            <result property="name" column="user_name"/>
+        </association>
+        <association property="t" javaType="Tag">
+            <id property="tagid" column="tagid"/>
+            <result property="tag1" column="tag1"/>
+            <result property="tag2" column="tag2"/>
+            <result property="tag3" column="tag3"/>
+        </association>
+
+    </resultMap>
+    <select id="getTypes" resultType="com.pojo.Type">
+        select * from type
+    </select>
+    <select id="getDescSong" resultMap="DescSongMap">
+        select * from song,singer where song.s_singerid=singer.singer_id ORDER BY s_playcount DESC
+    </select>
+    <resultMap id="DescSongMap" type="com.pojo.SongView">
+        <id column="s_id" property="sid"/>
+        <result property="sname" column="s_name"/>
+        <result property="playcount" column="s_playcount"/>
+        <result property="spic" column="s_pic"/>
+        <association property="singer" javaType="Singer">
+            <id property="singer_id" column="singer_id"/>
+            <result property="singer_name" column="singer_name"/>
+        </association>
+        <association property="type" javaType="Type">
+            <id property="typeId" column="typeId"/>
+            <result property="typeName" column="typeName"/>
+        </association>
+    </resultMap>
+    <update id="updateSongCount" parameterType="int">
+        UPDATE song set s_playcount=s_playcount+1 where s_id=#{s_id}
+    </update>
+    <select id="searchSong" resultMap="SongSingerMap">
+        select * from song,singer,cd where song.s_CDid=cd.CDid and song.s_name like #{name} and song.s_singerid=singer.singer_id
+   </select>
+    <resultMap id="SongSingerMap" type="com.pojo.SongView">
+        <id column="s_id" property="sid"/>
+        <result property="sname" column="s_name"/>
+        <result property="playcount" column="s_playcount"/>
+        <result property="publishdate" column="s_publishdate"/>
+        <result property="stime" column="s_time"/>
+        <result property="spic" column="s_pic"/>
+        <association property="singer" javaType="Singer">
+            <id property="singer_id" column="singer_id"/>
+            <result property="singer_name" column="singer_name"/>
+        </association>
+        <association property="cd" javaType="CD">
+            <id property="CDid" column="CDid"/>
+            <result property="CDname" column="CDname"/>
+        </association>
+    </resultMap>
+    <!--<insert id="insertSongList" parameterType="com.pojo.SongListView">
+        insert into songlist(sl_id, sl_userid, sl_name, sl_tagid, sl_counts, sl_info, sl_time, sl_url) values ({})
+    </insert>-->
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mapper.UserMapper">
+    <select id="findUserById" resultMap="UserMap" parameterType="int">
+       select * from user u where u.user_id=#{id}
+    </select>
+    <resultMap id="UserMap" type="com.pojo.User">
+        <id property="id" column="user_id"/>
+        <result property="name" column="user_name"/>
+        <result property="age" column="user_age"/>
+        <result property="email" column="user_email"/>
+        <result property="password" column="user_password"/>
+        <collection property="songListViews" javaType="list"  ofType="SongList" column="user_id" select="getSlist">
+        </collection>
+    </resultMap>
+    <select id="getSlist" parameterType="int" resultType="SongList">
+        select sl_id slid,sl_name slname,sl_userid sluid,sl_time sltime from songlist where sl_userid=#{id}
+    </select>
+    <select id="findUser" parameterType="String" resultType="com.pojo.User">
+        select user_id id,user_name name,user_password password,user_age age,user_email email from user where user_name=#{name}
+    </select>
+    <!-- List<User>getUsers(); -->
+     <!--<select id="getUsers" resultType="com.pojo.User">
+     select * from user
+     </select>-->
+    <!-- int deleteUserById(Integer id) -->
+  <!--  <delete id="deleteUserById" parameterType="int">
+    delete  from user where id=#{id}
+    </delete>-->
+    <!-- int updateUser(User user) -->
+    <update id="updateUser" parameterType="com.pojo.User" >
+    update user set user_name=#{name},user_password=#{password},user_age=#{age},user_email=#{email} where user_id=#{id}
+    </update>
+    <insert id="addUser" parameterType="com.pojo.User">
+        insert into user(user_name,user_password,user_age,user_email) values(#{name},#{password},#{age},#{email})
+    </insert>
+</mapper>
