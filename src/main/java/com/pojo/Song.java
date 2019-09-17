@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Song {
     private int sid;
     private String sname;
-    private Singer singer;
+    private SingerVo singer;
     private int cdid;
     private int playcount;
     private Date publishdate;
@@ -32,11 +32,11 @@ public class Song {
         this.sname = sname;
     }
 
-    public Singer getSinger() {
+    public SingerVo getSinger() {
         return singer;
     }
 
-    public void setSinger( Singer singer ) {
+    public void setSinger( SingerVo singer ) {
         this.singer = singer;
     }
 

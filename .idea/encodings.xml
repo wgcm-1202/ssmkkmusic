@@ -2,5 +2,12 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/images/index/logo.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/images/singer/8644ebf81a4c510f4fa562e96259252dd52aa5e4.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/images/songlist/249573199_5b613acd80679_fj34_1533098701.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/images/songlist/58e38bb7903c1_ZkWq_1491307447.jpg" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/img/logo.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/source/musicList.json" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
   </component>
 </project>

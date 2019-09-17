@@ -10,9 +10,7 @@ import com.service.SongListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -41,12 +39,33 @@ public class SongListController {
         /*request.setAttribute("slists",songListViews);*/
         return "songlist";
     }
-    @RequestMapping("/slone")
-    public String getOneSongList( Integer slid, Model model ){
-        SongListView oneSongListView =songListService.getOneSongList(slid);
-        System.out.println(oneSongListView);
+    @RequestMapping(value = "/slone/{id}",method = RequestMethod.GET)
+    public String getOneSongList( @PathVariable Integer id, Model model ){
+        SongListView oneSongListView =songListService.getOneSongList(id);
+        Integer n=songListService.updateSongListCollection(id);
+        List<Integer> integers=songListService.selectSLCollection(id);
+        oneSongListView.setCollection(n);
+        model.addAttribute("integers",integers);
         model.addAttribute("list", oneSongListView);
         return "/slone";
     }
-
+    @RequestMapping("/Collect")
+    @ResponseBody
+    public int collectOneSongList( Integer id,Integer userid, Model model ){
+        System.out.println(id+","+userid);
+        SongListView oneSongListView =songListService.getOneSongList(id);
+        Integer result;
+        List<Integer> integers=songListService.selectSLCollection(id);
+        if (integers.contains(userid)){
+             result=songListService.deleteSLCollection(userid,id);
+        }else {
+             result=songListService.insertSLCollection(userid,id);
+        }
+        Integer n=songListService.updateSongListCollection(id);
+        oneSongListView.setCollection(n);
+        System.out.println(oneSongListView);
+        model.addAttribute("list", oneSongListView);
+        model.addAttribute("integers",integers);
+        return result;
+    }
 }

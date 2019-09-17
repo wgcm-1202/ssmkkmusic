@@ -1,0 +1,434 @@
+.songlist-collect-to {
+	border: 1px solid #e1e1e1;
+	width: 197px;
+	background-color: #fff;
+	padding: 0 10px;
+	right: -5px;
+	top: 24px;
+	z-index: 100;
+	box-shadow: 3px 3px 7px #f1f1f1;
+}
+
+.mylist-right-hidden {
+	overflow: hidden;
+	width: 197px;
+}
+
+.songlist-collect-to .list-arrow {
+	background: url("img/EYrPXVvf.png") no-repeat;
+	width: 17px;
+	height: 7px;
+	right: 10px;
+	top: -7px;
+	background-position: -564px -36px;
+}
+
+.songlist-collect-to .mylist li {
+	border-bottom: 1px solid #efefef;
+	height: 31px;
+	line-height: 31px;
+	padding: 0;
+	width: 197px;
+}
+
+.songlist-collect-to span {
+	float: left;
+	width: 140px;
+	text-align: left;
+	height: 31px;
+	padding-left: 10px;
+	font-size: 12px;
+}
+
+.songlist-collect-to .song-collect {
+	cursor: pointer;
+}
+
+.songlist-collect-to .mylist .mysonglist-num {
+	float: right;
+	width: 37px;
+	font-size: 12px;
+	color: #333;
+}
+
+.btn-collect-mylist {
+	opacity: .4;
+	cursor: default;
+	filter: alpha(opacity=40);
+}
+
+.btn-collect-mylist:hover {
+	text-decoration: none;
+}
+
+.songlist-title-tip {
+	color: red;
+	width: 100%;
+	display: block;
+}
+
+.cerate-songlist-btn {
+	display: block;
+	height: 22px;
+	line-height: 22px;
+	width: 100%;
+	text-align: center;
+}
+
+.mylist {
+	padding-right: 30px;
+	max-height: 160px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 197px;
+}
+
+.create-box {
+	padding: 5px 0;
+}
+
+.mylist-mysonglist {
+	cursor: pointer;
+}
+
+.mylist li:hover {
+	background-color: #f0f0f0;
+}
+
+.songlist-collect-to .create-box .create-newList-name {
+	width: 104px;
+	height: 18px;
+	line-height: 18px;
+	padding: 0 3px;
+	border: 1px solid #64aeff;
+	background-color: #d9eaff;
+	float: left;
+}
+
+.songlist-collect-to .create-box .create-newList-btn {
+	border: 1px solid #64aeff;
+	background-color: #64aeff;
+	height: 18px;
+	color: #fff;
+	line-height: 18px;
+	font-size: 12px;
+	width: 72px;
+	text-align: center;
+	float: right;
+}
+
+.overdd {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-stroke-width: 0.2px;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.song-list-wrap ul .songlist-item {
+	text-align: left;
+	font-size: 12px;
+	color: #999;
+	height: 56px;
+	line-height: 56px;
+	border-bottom: 1px solid #f3f3f3;
+	padding: 0;
+	padding-left: 46px;
+	padding-right: 100px;
+	position: relative;
+	clear: both;
+}
+
+.songlist-item.last {
+	border-bottom: 0;
+}
+
+.songlist-inline {
+	float: left;
+}
+
+.songlist-inline * {
+	font-size: 14px;
+}
+
+.songlist-number {
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #999;
+	width: 44px;
+	padding-left: 8px;
+	border-bottom: 1px solid #fff;
+}
+
+.songlist-header-name,
+.songlist-title {
+	width: 60%;
+	position: relative;
+}
+
+.songlist-album,
+.songlist-header-album {
+	width: 34%;
+	padding-left: 20px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.songlistheaderpercent {
+	width: 24%;
+	padding-left: 50px;
+}
+
+.songlist-time,
+.songlist-header-time {
+	position: absolute;
+	top: 0;
+	right: 38px;
+	width: 50px;
+}
+
+.songlist-time {
+	color: #999;
+}
+
+.albumpercent {
+	color: #333;
+	width: 115px;
+	cursor: pointer;
+	font-size: 14px;
+	right: 5px;
+}
+
+.albumpercent:hover {
+	color: #e13228;
+}
+
+.songlist-other {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 38px;
+	overflow: inherit;
+}
+
+.list-menu {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	display: none;
+	margin-top: -32px;
+	line-height: 60px;
+	height: 60px;
+}
+
+.songlist-item:hover .list-menu {
+	display: block;
+}
+
+.songlist-item .songname .namelink {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 75%;
+	white-space: nowrap;
+	float: left;
+}
+
+.songlist-item:hover .songname .namelink {
+	max-width: 36%;
+	box-sizing: border-box;
+}
+
+.songlist-item:hover .songname .width27percent {
+	max-width: 37%;
+	box-sizing: border-box;
+}
+
+.songlist-item .songname .hasmv,
+.songlist-item .songname .artist-wusun {
+	margin-left: 5px;
+	position: relative;
+	top: 1px;
+	font-size: 16px;
+	color: #e13228;
+}
+
+.songlist-item .songname .artist-wusun {
+	font-size: 16.5px;
+}
+
+.pop-introduce {
+	overflow: auto;
+	max-height: 158px;
+	width: 467px;
+}
+
+.list-menu a {
+	font-size: 24px;
+	margin-right: 8px;
+	cursor: pointer;
+	background: none;
+}
+
+.list-menu .icon-add {
+	font-size: 26px;
+}
+
+.list-menu a:hover {
+	color: #e13228;
+	background: none;
+}
+
+.album-list-box {
+	padding: 20px 0;
+	margin-left: -34px;
+	padding-top: 30px;
+}
+
+.add-to .add-to-sub {
+	display: block;
+	padding: 5px 0 5px 15px;
+	width: 103px;
+	cursor: pointer;
+	font-size: 12px;
+	line-height: 20px;
+}
+
+.add-tos {
+	left: -13px;
+	width: 118px;
+	top: 45px;
+	background-color: #fff;
+	z-index: 1;
+}
+
+.song-list-wrap .songlist-item .cerate-songlist-btn {
+	display: block;
+	height: 22px;
+	line-height: 22px;
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+}
+
+.song-list-wrap .songlist-item .songlist-collect-to {
+	border: 1px solid #e1e1e1;
+	width: 197px;
+	background-color: #fff;
+	padding: 0 10px;
+	left: 95px;
+	top: 45px;
+	z-index: 100;
+	box-shadow: 3px 3px 7px #f1f1f1;
+}
+
+.list-header li {
+	float: left;
+	color: #999;
+}
+
+.list-header {
+	background: #f7f7f7;
+	height: 40px;
+	line-height: 40px;
+}
+
+.list-header,
+ul li.songlist-item {
+	padding: 0;
+	padding-left: 46px;
+	padding-right: 100px;
+	position: relative;
+}
+
+.song-list-wrap .songlist-collect-to .mylist .mylist-mysonglist {
+	color: #000;
+}
+
+.add-to {
+	left: -13px;
+	width: 107px;
+	top: 45px;
+	background-color: #fff;
+	z-index: 1;
+	box-shadow: 3px 3px 7px #f1f1f1;
+}
+
+.list-menu .add-to li {
+	width: 107px;
+	margin-right: 0;
+	border: 1px solid #e1e1e1;
+	padding: 0;
+}
+
+.list-menu .add-to .add-to-unic {
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+.songpage-fixeds .add-to li {
+	width: 183px;
+	height: 30px;
+}
+
+.add-to .add-to-sub {
+	display: block;
+	padding: 5px 0 5px 15px;
+	width: 103px;
+	cursor: pointer;
+	font-size: 12px;
+	line-height: 20px;
+	color: #000;
+}
+
+.add-to .add-to-sub:hover {
+	color: #e13228;
+}
+
+.list-menu .add-to .add-to-sub-li {
+	border-top: 0px;
+	border-bottom: 0px;
+}
+
+.songlist-collect-to {
+	left: 73px;
+	top: 30px;
+}
+
+.adds .songlist-collect-to .mylist li {
+	width: 197px;
+}
+
+.adds .list-arrow {
+	display: none;
+}
+
+.gray,
+.gray:hover,
+.gray .iconfont:hover {
+	color: #aaa !important;
+}
+
+.song-list-wrap .singer a:hover,
+.song-list-wrap .songname a:hover {
+	color: #e13228;
+}
+
+.songlistmenu {
+	right: -25px;
+}
+
+/** If u are interested in our code and would like to make it robust, just contact us^^ <@音乐前端> **/
+/** Generated by M3D. **/

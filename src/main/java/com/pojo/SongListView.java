@@ -13,7 +13,8 @@ public class SongListView implements Serializable {
     private String sltime;
     private String slurl;
     private Tag t;
-    private List<Song> songs=new ArrayList<>();
+    private int collection;
+    private List<SongView> songs=new ArrayList<>();
 
     public SongListView(){
 
@@ -84,11 +85,32 @@ public class SongListView implements Serializable {
         this.t = t;
     }
 
-    public List<Song> getSongs() {
+    public List<SongView> getSongs() {
         return songs;
     }
 
-    public void setSongs( List<Song> songs ) {
+    public void setSongs( List<SongView> songs ) {
+        this.songs = songs;
+    }
+
+    public int getCollection() {
+        return collection;
+    }
+
+    public void setCollection( Integer collection ) {
+        this.collection = collection;
+    }
+
+    public SongListView( int slid, User user, String slname, int slcounts, String slinfo, String sltime, String slurl, Tag t, Integer collection, List<SongView> songs ) {
+        this.slid = slid;
+        this.user = user;
+        this.slname = slname;
+        this.slcounts = slcounts;
+        this.slinfo = slinfo;
+        this.sltime = sltime;
+        this.slurl = slurl;
+        this.t = t;
+        this.collection = collection;
         this.songs = songs;
     }
 
@@ -103,6 +125,7 @@ public class SongListView implements Serializable {
                 ", sltime='" + sltime + '\'' +
                 ", slurl='" + slurl + '\'' +
                 ", t=" + t +
+                ", collection=" + collection +
                 ", songs=" + songs +
                 '}';
     }

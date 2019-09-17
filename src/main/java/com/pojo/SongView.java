@@ -6,12 +6,12 @@ import java.sql.Date;
 public class SongView implements Serializable {
     private int sid;
     private String sname;
-    private Singer singer;
+    private SingerVo singer;
     private CD cd;
     private int playcount;
     private Date publishdate;
     private String songurl;
-    private String cyricul;
+    private String cyricurl;
     private String stime;
     private String spic;
     private Type type;
@@ -33,11 +33,11 @@ public class SongView implements Serializable {
         this.sname = sname;
     }
 
-    public Singer getSinger() {
+    public SingerVo getSinger() {
         return singer;
     }
 
-    public void setSinger( Singer singer ) {
+    public void setSinger( SingerVo singer ) {
         this.singer = singer;
     }
 
@@ -73,12 +73,12 @@ public class SongView implements Serializable {
         this.songurl = songurl;
     }
 
-    public String getCyricul() {
-        return cyricul;
+    public String getCyricurl() {
+        return cyricurl;
     }
 
-    public void setCyricul( String cyricul ) {
-        this.cyricul = cyricul;
+    public void setCyricurl( String cyricurl ) {
+        this.cyricurl = cyricurl;
     }
 
     public String getStime() {
@@ -115,7 +115,7 @@ public class SongView implements Serializable {
                 ", playcount=" + playcount +
                 ", publishdate=" + publishdate +
                 ", songurl='" + songurl + '\'' +
-                ", cyricul='" + cyricul + '\'' +
+                ", cyricurl='" + cyricurl + '\'' +
                 ", stime='" + stime + '\'' +
                 ", spic='" + spic + '\'' +
                 ", type=" + type +

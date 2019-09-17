@@ -16,7 +16,7 @@ public class SingerVo implements Serializable {
     private String singersex;
     private String photoUrl;
     private Tag tag;
-    private List<Song> songs=new ArrayList<>();
+    private List<SongView> songs=new ArrayList<>();
     private List<CD> cds =new ArrayList<>();
 
     public SingerVo() {
@@ -94,11 +94,11 @@ public class SingerVo implements Serializable {
         this.photoUrl = photoUrl;
     }
 
-    public List<Song> getSongs() {
+    public List<SongView> getSongs() {
         return songs;
     }
 
-    public void setSongs( List<Song> songs ) {
+    public void setSongs( List<SongView> songs ) {
         this.songs = songs;
     }
 

@@ -35,7 +35,7 @@ public class SingerListServiceImpl implements SingerListService {
     }
 
     @Override
-    public List<SingerVo> searchSinger( String name ) {
+    public List<SongView> searchSinger( String name ) {
         return singerListMapper.searchSinger(name);
     }
 

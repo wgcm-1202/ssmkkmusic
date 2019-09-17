@@ -38,4 +38,17 @@ public class SingerListController {
         /*request.setAttribute("slists",songListViews);*/
         return "singerlist";
     }
+    @RequestMapping("/singerone")
+    public String getOneSinger(@RequestParam( required = false,value = "pg",
+            defaultValue = "1") Integer pg,Integer singerid,HttpServletRequest request){
+        PageHelper.startPage(pg,5);
+        SingerVo singerVo=singerListService.getOneSinger(singerid);
+        PageInfo p=new PageInfo(singerVo.getSongs());
+       /* PageInfo p1=new PageInfo(singerVo.getCds());
+        request.setAttribute("cds",p1);*/
+        request.setAttribute("singer",singerVo);
+        System.out.println(singerVo);
+        request.setAttribute("pageInfo",p);
+        return "singerone";
+    }
 }

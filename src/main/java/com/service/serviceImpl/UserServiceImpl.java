@@ -2,6 +2,7 @@ package com.service.serviceImpl;
 
 import com.mapper.UserMapper;
 import com.pojo.User;
+import com.pojo.UserVo;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById( int id ) {
+    public UserVo findUserById( int id ) {
         return userMapper.findUserById(id);
     }
 

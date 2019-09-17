@@ -1,10 +1,11 @@
 package com.mapper;
 
 import com.pojo.User;
+import com.pojo.UserVo;
 
 public interface UserMapper {
     int addUser( User user );
     int updateUser( User user );
-    User findUserById( int id );
+    UserVo findUserById( int id );
     User findUser( String name );
 }

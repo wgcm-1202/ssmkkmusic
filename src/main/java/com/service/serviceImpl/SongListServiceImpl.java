@@ -17,8 +17,39 @@ public class SongListServiceImpl implements SongListService {
     }
 
     @Override
-    public SongListView getOneSongList( Integer slid) {
-        return songListMapper.getOneSongList(slid);
+    public SongListView getOneSongList( Integer id) {
+        return songListMapper.getOneSongList(id);
+    }
+
+    @Override
+    public List<SongListView> getUserSongList() {
+        return songListMapper.getUserSongList();
+    }
+
+    @Override
+    public List<SongView> getAllSongs() {
+        return songListMapper.getAllSongs();
+    }
+
+    @Override
+    public int insertSLCollection( int userid, int id ) {
+        return songListMapper.insertSLCollection(userid, id);
+    }
+
+    @Override
+    public int deleteSLCollection( int userid, int id ) {
+        return songListMapper.deleteSLCollection(userid, id);
+    }
+
+    @Override
+    public List<Integer> selectSLCollection( Integer id ) {
+        return songListMapper.selectSLCollection(id);
+    }
+
+
+    @Override
+    public int updateSongListCollection( int id ) {
+        return songListMapper.updateSongListCollection(id);
     }
 
     @Override
@@ -49,5 +80,10 @@ public class SongListServiceImpl implements SongListService {
     @Override
     public int updateSongCount( int s_id ) {
         return songListMapper.updateSongCount(s_id);
+    }
+
+    @Override
+    public SongView getSong( Integer id ) {
+        return songListMapper.getSong(id);
     }
 }

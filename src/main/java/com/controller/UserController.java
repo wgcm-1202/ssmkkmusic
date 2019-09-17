@@ -6,12 +6,10 @@ import com.service.SongListService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,13 +27,35 @@ public class UserController {
     @RequestMapping("/")
     public String UserMsg( HttpServletRequest request ){
         List<SongView> songViews=songListService.getDescSong();
-        System.out.println(songViews);
+        List<SingerVo> singerVoList=singerListService.getAllSingerList();
+        List<SongListView> songListViews=songListService.getUserSongList();
+        List<SongView> songViews1=songListService.getAllSongs();
+        request.setAttribute("AllSongList",songViews1);
+        request.setAttribute("songListViews",songListViews);
         request.setAttribute("songViews",songViews);
+        request.setAttribute("singers",singerVoList);
         return "index";
     }
-    @RequestMapping("/user")
-    public String toUser(){
+    @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
+    public String toUser( @PathVariable Integer id, HttpServletRequest request){
+        UserVo userVo=userService.findUserById(id);
+        request.setAttribute("user",userVo);
         return "user";
+    }
+
+    @RequestMapping(value = "/songlist/edit/{id}",method = RequestMethod.GET)
+    public String toMySong(@PathVariable Integer id,HttpServletRequest request){
+        SongListView songListView=songListService.getOneSongList(id);
+        request.setAttribute("songlist",songListView);
+        return "mysongedit";
+    }
+    @RequestMapping("/audio")
+    public String toAudio(){
+        return "audio";
+    }
+    @RequestMapping("/main")
+    public String toMain(){
+        return "main";
     }
     @RequestMapping("/songlist")
     public String toSongList(){
@@ -79,19 +99,6 @@ public class UserController {
     public String UpdateCount(
             @RequestParam Integer sid, HttpServletRequest request){
         songListService.updateSongCount(sid);
-
         return "redirect:/";
-    }
-    @RequestMapping("/search")
-    public String getSearch(String name,HttpServletRequest request){
-        List<SingerVo> singerVos=singerListService.searchSinger(name);
-        if (singerVos!=null){
-            request.setAttribute("searchinfo",singerVos);
-            return "search";
-        }else {
-            List<SongView> songViews=songListService.searchSong(name);
-            request.setAttribute("searchinfo",songViews);
-            return "search";
-        }
     }
 }
