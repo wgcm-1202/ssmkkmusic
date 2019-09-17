@@ -6,9 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6bdfb535-af4c-456f-a80b-a5f4255c6cc6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6bdfb535-af4c-456f-a80b-a5f4255c6cc6" name="Default Changelist" comment="收藏功能" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -702,7 +700,7 @@
       <workItem from="1568161893414" duration="10887000" />
       <workItem from="1568248702445" duration="17409000" />
       <workItem from="1568616367711" duration="16771000" />
-      <workItem from="1568681651580" duration="2075000" />
+      <workItem from="1568681651580" duration="2574000" />
     </task>
     <task id="LOCAL-00001" summary="播放器">
       <created>1567596429426</created>
@@ -718,7 +716,21 @@
       <option name="project" value="LOCAL" />
       <updated>1568682893867</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="收藏功能">
+      <created>1568683834812</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568683834812</updated>
+    </task>
+    <task id="LOCAL-00004" summary="收藏功能">
+      <created>1568683913829</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1568683913829</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -754,7 +766,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328271000" />
+    <option name="totallyTimeSpent" value="328770000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -888,13 +900,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="收藏功能" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/css/swiper.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-743">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/kkmusic/mysongedit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-23">
@@ -1248,6 +1253,11 @@
         <state relative-caret-position="-102">
           <caret line="313" column="19" lean-forward="true" selection-start-line="313" selection-start-column="19" selection-end-line="313" selection-end-column="19" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/收藏功能.patch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2250" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
